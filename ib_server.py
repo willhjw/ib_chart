@@ -772,7 +772,8 @@ def api_eps_revenue():
 
 @app.route("/")
 def index():
-    for name in ("ib_multichart.html", "ib_chart.html"):
+    # Default landing page: single chart.
+    for name in ("ib_chart.html", "ib_multichart.html"):
         html = BASE_DIR / name
         if html.exists():
             return html.read_text(encoding="utf-8"), 200, {
