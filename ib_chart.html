@@ -5194,7 +5194,108 @@ function initChart(){
 
   ctx.setLineDash([]);
 
-    // Custom bottom bubble removed; keep only crosshair lines.
+    // Right-axis price bubble (native horzLine label hidden; follows custom crosshair Y)
+    if (crosshairOverlayY != null && Number.isFinite(crosshairOverlayY) && priceSeries) {
+      const chartEl = document.getElementById('chart');
+      const mainTop = overlayMainOffsetY;
+      const mainH = chartEl ? chartEl.clientHeight : 0;
+      const inMainPane = mainH > 0 && crosshairOverlayY >= mainTop - 0.5 && crosshairOverlayY <= mainTop + mainH + 0.5;
+      if (inMainPane) {
+        const yChart = crosshairOverlayY - overlayMainOffsetY;
+        const price = priceSeries.coordinateToPrice(yChart);
+        if (price != null && Number.isFinite(price)) {
+          const yPx = Math.round(crosshairOverlayY * crosshairOverlayDpr);
+          const priceText = price.toFixed(2);
+          let axisFontPx = 11;
+          let axisFontFamily = '"Trebuchet MS", Roboto, Ubuntu, sans-serif';
+          try {
+            const lay = chart?.options?.()?.layout;
+            if (lay) {
+              if (typeof lay.fontSize === 'number' && lay.fontSize > 0) axisFontPx = lay.fontSize;
+              if (typeof lay.fontFamily === 'string' && lay.fontFamily.trim()) axisFontFamily = lay.fontFamily;
+            }
+          } catch (e) {}
+          const fontSize = axisFontPx * crosshairOverlayDpr;
+          ctx.save();
+          ctx.font = `${fontSize}px ${axisFontFamily}`;
+          const paddingY = 6 * crosshairOverlayDpr;
+          const boxWidth = Math.round(40 * crosshairOverlayDpr);
+          const boxHeight = fontSize + paddingY * 2;
+          const pad = 4 * crosshairOverlayDpr;
+          let boxX = wPx - boxWidth - pad;
+          let boxY = yPx - boxHeight / 2;
+          boxY = Math.max(pad, Math.min(boxY, hPx - boxHeight - pad));
+          const radius = 5 * crosshairOverlayDpr;
+          const bg = isLightTheme ? 'rgba(232,236,240,1)' : 'rgba(76,82,94,1)';
+          const border = isLightTheme ? 'rgba(208,215,221,1)' : 'rgba(120,130,150,1)';
+          const txtCol = isLightTheme ? '#1a1f2e' : '#e8f0f8';
+          ctx.beginPath();
+          ctx.moveTo(boxX + radius, boxY);
+          ctx.lineTo(boxX + boxWidth - radius, boxY);
+          ctx.quadraticCurveTo(boxX + boxWidth, boxY, boxX + boxWidth, boxY + radius);
+          ctx.lineTo(boxX + boxWidth, boxY + boxHeight - radius);
+          ctx.quadraticCurveTo(boxX + boxWidth, boxY + boxHeight, boxX + boxWidth - radius, boxY + boxHeight);
+          ctx.lineTo(boxX + radius, boxY + boxHeight);
+          ctx.quadraticCurveTo(boxX, boxY + boxHeight, boxX, boxY + boxHeight - radius);
+          ctx.lineTo(boxX, boxY + radius);
+          ctx.quadraticCurveTo(boxX, boxY, boxX + radius, boxY);
+          ctx.closePath();
+          ctx.fillStyle = bg;
+          ctx.fill();
+          ctx.strokeStyle = border;
+          ctx.lineWidth = 1 * crosshairOverlayDpr;
+          ctx.stroke();
+          ctx.fillStyle = txtCol;
+          ctx.textBaseline = 'middle';
+          ctx.textAlign = 'center';
+          ctx.fillText(priceText, boxX + boxWidth / 2, boxY + boxHeight / 2 + 0.5 * crosshairOverlayDpr);
+          ctx.restore();
+        }
+      }
+    }
+
+    // Date bubble at bottom (approximate built-in LightweightCharts time label)
+    if (crosshairOverlayLabel) {
+      ctx.save();
+      const label = crosshairOverlayLabel;
+      const fontSize = 12 * crosshairOverlayDpr;
+      ctx.font = `${fontSize}px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif`;
+      const paddingX = 9 * crosshairOverlayDpr;
+      const paddingY = 6 * crosshairOverlayDpr;
+      const textWidth = ctx.measureText(label).width;
+      const boxWidth = textWidth + paddingX * 2;
+      const boxHeight = fontSize + paddingY * 2;
+      const yPx = hPx - boxHeight - 4 * crosshairOverlayDpr;
+      let boxX = xPxForBubble - boxWidth / 2;
+      boxX = Math.max(4 * crosshairOverlayDpr, Math.min(boxX, wPx - boxWidth - 4 * crosshairOverlayDpr));
+      const radius = 5 * crosshairOverlayDpr;
+      const bg = isLightTheme ? 'rgba(232,236,240,1)' : 'rgba(40,44,52,1)';
+      const border = isLightTheme ? 'rgba(208,215,221,1)' : 'rgba(120,130,150,1)';
+      const textColor = isLightTheme ? '#5a6775' : '#cdd6e2';
+
+      ctx.beginPath();
+      ctx.moveTo(boxX + radius, yPx);
+      ctx.lineTo(boxX + boxWidth - radius, yPx);
+      ctx.quadraticCurveTo(boxX + boxWidth, yPx, boxX + boxWidth, yPx + radius);
+      ctx.lineTo(boxX + boxWidth, yPx + boxHeight - radius);
+      ctx.quadraticCurveTo(boxX + boxWidth, yPx + boxHeight, boxX + boxWidth - radius, yPx + boxHeight);
+      ctx.lineTo(boxX + radius, yPx + boxHeight);
+      ctx.quadraticCurveTo(boxX, yPx + boxHeight, boxX, yPx + boxHeight - radius);
+      ctx.lineTo(boxX, yPx + radius);
+      ctx.quadraticCurveTo(boxX, yPx, boxX + radius, yPx);
+      ctx.closePath();
+      ctx.fillStyle = bg;
+      ctx.fill();
+      ctx.strokeStyle = border;
+      ctx.lineWidth = 1 * crosshairOverlayDpr;
+      ctx.stroke();
+
+      ctx.fillStyle = textColor;
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, boxX + boxWidth / 2, yPx + boxHeight / 2 + 0.5 * crosshairOverlayDpr);
+      ctx.restore();
+    }
   }
 
   function setCrosshairX(x, label, y){
@@ -5286,8 +5387,8 @@ function initChart(){
           grid:{vertLines:{visible:false},horzLines:{visible:false}},
           crosshair:{
             mode:LightweightCharts.CrosshairMode.None,
-            vertLine:{visible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Solid},
-            horzLine:{visible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Dashed},
+            vertLine:{visible:false,labelVisible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Solid},
+            horzLine:{visible:false,labelVisible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Dashed},
           },
           rightPriceScale:{borderColor:borderColor},
           // Show the only shared time axis here
@@ -5365,8 +5466,8 @@ function initChart(){
     grid:{vertLines:{visible:false},horzLines:{visible:false}},
     crosshair:{
       mode:LightweightCharts.CrosshairMode.None,
-      vertLine:{visible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Solid},
-      horzLine:{visible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Dashed},
+      vertLine:{visible:false,labelVisible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Solid},
+      horzLine:{visible:false,labelVisible:false,color:'rgba(0,0,0,0)',width:1,style:LightweightCharts.LineStyle.Dashed},
     },
     rightPriceScale:{borderColor:borderColor},
     timeScale:{
