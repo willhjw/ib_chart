@@ -195,7 +195,8 @@ IB historical source:
 
 MIT. See `LICENSE`.
 
-## Buy me a coffe
+## Buy me a coffee
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/f092a91a-0cda-4f52-83c0-a0ea6cae91d4" />
 
 If you find my work helpful, please consider buying me a coffee. Building this project involves development time and AI token costs.
 buymeacoffee.com/willhu
