@@ -164,34 +164,6 @@
     font-size:var(--fs-xs);
     white-space:nowrap;
   }
-  .sort-controls{
-    display:flex;
-    align-items:center;
-    gap:6px;
-  }
-  .sort-btn{
-    background:var(--bg3);
-    border:1px solid var(--border);
-    color:var(--muted);
-    padding:4px 8px;
-    border-radius:10px;
-    font-family:var(--tv);
-    font-size:var(--fs-xs);
-    font-weight:700;
-    cursor:pointer;
-    outline:none;
-    transition: border-color .12s ease, background .12s ease, color .12s ease;
-    white-space:nowrap;
-  }
-  .sort-btn:hover{
-    border-color:rgba(0,212,170,0.35);
-    color:var(--text);
-  }
-  .sort-btn.active{
-    border-color:rgba(0,212,170,0.70);
-    background:rgba(0,212,170,0.12);
-    color:var(--text);
-  }
   .sync-controls label{
     display:flex;
     align-items:center;
@@ -280,11 +252,6 @@
       </div>
     </div>
     <div class="sync-controls" id="sync-controls">
-      <div class="sort-controls" id="sort-controls" aria-label="Sort panels">
-        <button type="button" id="sort-btn-change" class="sort-btn" data-col="change">Chg%</button>
-        <button type="button" id="sort-btn-dolvol" class="sort-btn" data-col="dolvol">$Vol</button>
-        <button type="button" id="sort-btn-tags" class="sort-btn" data-col="tags">Tag</button>
-      </div>
       <label class="toggle" title="When enabled, changing symbol in one panel updates the rest.">
         <input id="sync-symbol" type="checkbox" checked>
         <span class="switch" aria-hidden="true"></span>

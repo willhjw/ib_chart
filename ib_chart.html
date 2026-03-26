@@ -39,93 +39,6 @@
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--tv);overflow:hidden;}
   .app{display:grid;grid-template-rows:48px 1fr;height:100vh;}
   .app-body{display:flex;flex:1;overflow:hidden;}
-  /* Order panel sidebar */
-  .order-sidebar{
-    width:272px;
-    min-width:272px;
-    background:#1e222d;
-    border-right:1px solid #1f2833;
-    display:flex;
-    flex-direction:column;
-    overflow-y:auto;
-    transition:width 0.2s ease, min-width 0.2s ease, opacity 0.2s ease;
-  }
-  .order-sidebar.collapsed{
-    width:0;min-width:0;opacity:0;pointer-events:none;overflow:hidden;
-  }
-  .toggle-sidebar-btn{
-    flex-shrink:0;
-    width:18px;
-    background:#1e222d;
-    border:none;
-    border-right:1px solid #1f2833;
-    color:#8899aa;font-size:9px;
-    cursor:pointer;
-    writing-mode:vertical-lr;
-    letter-spacing:1px;
-    user-select:none;
-    padding:12px 2px;
-    align-self:stretch;
-    transition:background 0.15s, color 0.15s;
-    z-index:10;
-  }
-  .toggle-sidebar-btn:hover{color:#e8f0f8;background:#2a2e39;}
-  .toggle-sidebar-btn.sidebar-open{border-right:none;border-left:1px solid #1f2833;}
-  /* sidebar sections */
-  .os-sec{border-bottom:1px solid #1f2833;padding:9px 11px;}
-  .os-title{font-size:9px;font-weight:700;letter-spacing:1.5px;color:#3a4050;text-transform:uppercase;margin-bottom:7px;}
-  .os-row{display:flex;gap:5px;align-items:center;margin-bottom:5px;}
-  .os-row:last-child{margin-bottom:0;}
-  .os-lbl{color:#8899aa;font-size:10px;min-width:52px;}
-  .os-inp{background:#131722;border:1px solid #1f2833;border-radius:3px;color:#e8f0f8;font-family:'Inter',sans-serif;font-size:11px;padding:4px 6px;width:100%;outline:none;}
-  .os-inp:focus{border-color:#00d4aa;}
-  .os-dir{display:flex;border-radius:3px;overflow:hidden;border:1px solid #1f2833;margin-top:5px;}
-  .os-dir button{flex:1;padding:5px;background:#131722;border:none;color:#8899aa;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;}
-  .os-dir button.active-long{background:#26a69a;color:#fff;}
-  .os-dir button.active-short{background:#ef5350;color:#fff;}
-  .os-stop-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:7px;}
-  .os-stop-btn{padding:4px 3px;background:#131722;border:1px solid #1f2833;border-radius:3px;color:#8899aa;font-size:9px;text-align:center;cursor:pointer;white-space:pre;line-height:1.4;}
-  .os-stop-btn:hover{border-color:#8899aa;}
-  .os-stop-btn.active{border-color:#f5c842;color:#f5c842;background:rgba(245,200,66,0.08);}
-  .os-qty-toggle{display:flex;border-radius:3px;overflow:hidden;border:1px solid #1f2833;margin-bottom:6px;}
-  .os-qty-toggle button{flex:1;padding:3px;background:#131722;border:none;color:#8899aa;font-size:9px;font-weight:600;cursor:pointer;}
-  .os-qty-toggle button.active{background:#1a3a6a;color:#5b9ef5;}
-  .os-pills{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px;}
-  .os-pill{padding:3px 6px;background:#131722;border:1px solid #1f2833;border-radius:10px;color:#8899aa;font-size:9px;cursor:pointer;}
-  .os-pill:hover{border-color:#5b9ef5;}
-  .os-pill.active{border-color:#5b9ef5;background:#1a3a6a;color:#5b9ef5;}
-  .os-calc{background:#131722;border:1px solid #1f2833;border-radius:3px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:3px 8px;margin-top:4px;}
-  .os-calc-row{display:flex;justify-content:space-between;}
-  .os-cl{color:#8899aa;font-size:9px;}
-  .os-cv{color:#e8f0f8;font-size:9px;font-weight:600;}
-  .os-readout.os-atr-ok{color:#26a69a;}
-  .os-readout.os-atr-bad{color:#ef5350;}
-  .os-readout.os-atr-neu{color:#8899aa;}
-  html[data-theme="light"] .os-readout.os-atr-ok{color:#1b5e20;}
-  html[data-theme="light"] .os-readout.os-atr-bad{color:#c62828;}
-  html[data-theme="light"] .os-readout.os-atr-neu{color:#5c6570;}
-  .os-ot-label{display:flex;align-items:center;gap:6px;padding:5px 6px;background:#131722;border:1px solid #1f2833;border-radius:3px;margin-bottom:3px;font-size:10px;color:#e8f0f8;cursor:pointer;}
-  .os-ot-label:hover{border-color:#8899aa;}
-  .os-ot-label.sel{border-color:#5b9ef5;background:rgba(91,158,245,0.08);}
-  .os-submit{width:100%;padding:8px;border:none;border-radius:3px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:opacity 0.15s;margin-top:2px;}
-  .os-submit:hover{opacity:0.85;}
-  .os-submit.long{background:#26a69a;color:#fff;}
-  .os-submit.short{background:#ef5350;color:#fff;}
-  .os-wl-add{display:flex;gap:4px;margin-bottom:6px;}
-  .os-wl-inp{background:#131722;border:1px solid #1f2833;border-radius:3px;color:#e8f0f8;font-size:10px;padding:4px 6px;flex:1;outline:none;text-transform:uppercase;}
-  .os-wl-inp:focus{border-color:#00d4aa;}
-  .os-add-btn{background:#131722;border:1px solid #1f2833;border-radius:3px;color:#8899aa;font-size:11px;padding:4px 7px;cursor:pointer;}
-  .os-add-btn:hover{border-color:#00d4aa;color:#00d4aa;}
-  .os-chips{display:flex;flex-wrap:wrap;gap:3px;}
-  .os-chip{display:flex;align-items:center;gap:3px;padding:3px 6px;background:#131722;border:1px solid #1f2833;border-radius:3px;font-size:10px;font-weight:700;color:#e8f0f8;cursor:pointer;}
-  .os-chip:hover{border-color:#00d4aa;color:#00d4aa;}
-  .os-chip-x{color:#3a4050;font-size:9px;}
-  .os-chip-x:hover{color:#ef5350;}
-  .os-toast{position:fixed;bottom:16px;right:16px;padding:8px 14px;border-radius:4px;font-size:11px;font-weight:600;opacity:0;transition:opacity 0.3s;z-index:9999;pointer-events:none;}
-  .os-toast.show{opacity:1;}
-  .os-toast.success{background:#26a69a;color:#fff;}
-  .os-toast.error{background:#ef5350;color:#fff;}
-  .os-toast.info{background:#5b9ef5;color:#fff;}
   .topbar{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 12px;flex-wrap:wrap;}
   .topbar .spacer{flex:1 1 auto;min-width:10px;}
   #theme-toggle{margin-left:auto;flex:0 0 auto;}
@@ -962,6 +875,11 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
   }
+  [data-theme="light"] .draw-toolbar{
+    background: rgba(255,255,255,0.92);
+    border-color: rgba(208,215,221,0.95);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.16);
+  }
   .draw-toolbar.collapsed .tool-group,
   .draw-toolbar.collapsed .tb-sep,
   .draw-toolbar.collapsed #log-toggle,
@@ -998,6 +916,11 @@
     transition: all 0.12s ease;
     opacity: 0;
     pointer-events: none;
+  }
+  [data-theme="light"] .tool-cfg-btn{
+    background: rgba(232,236,240,0.95);
+    border-color: rgba(208,215,221,0.95);
+    color: #5a6775;
   }
   .tool-group:hover .tool-cfg-btn,
   .tool-cfg-btn:focus-visible{
@@ -1455,108 +1378,6 @@
 
   <!-- ── CHART PANEL ── -->
   <div class="app-body" id="app-body">
-  <div class="order-sidebar" id="order-sidebar">
-    <!-- Direction (symbol = top bar sym-input, same as chart) -->
-    <div class="os-sec">
-      <div class="os-title">Side</div>
-      <div class="os-dir" id="os-dir">
-        <button onclick="osSetDir('Long')" class="active-long">LONG</button>
-        <button onclick="osSetDir('Short')">SHORT</button>
-      </div>
-    </div>
-    <!-- Stop Price -->
-    <div class="os-sec">
-      <div class="os-title">Stop Price</div>
-      <div class="os-stop-grid" id="os-stop-grid">
-        <button type="button" class="os-stop-btn" onclick="osSelectStopMode('ema8')" data-mode="ema8">EMA8 (H/L)</button>
-        <button type="button" class="os-stop-btn" onclick="osSelectStopMode('prev')" data-mode="prev">Prev (H/L)</button>
-      </div>
-      <div class="os-row">
-        <span class="os-lbl">Stop $</span>
-        <input class="os-inp" id="os-stop" type="number" step="0.01" placeholder="0.00" oninput="osRecalc()">
-      </div>
-      <div class="os-row">
-        <span class="os-lbl" title="|Last − stop| ÷ ATR; 1 ATR = 100%">/ATR</span>
-        <span class="os-inp os-readout os-atr-neu" id="os-atr-ratio">—</span>
-      </div>
-      <div class="os-row">
-        <span class="os-lbl" title="|Last − stop| ÷ last price (as %)">Dist %</span>
-        <span class="os-inp os-readout os-atr-neu" id="os-stop-dist-pct">—</span>
-      </div>
-    </div>
-    <!-- Quantity -->
-    <div class="os-sec">
-      <div class="os-title">Quantity</div>
-      <div class="os-qty-toggle" id="os-qty-toggle">
-        <button onclick="osSetQtyMode('auto')" class="active">AUTO (risk%)</button>
-        <button onclick="osSetQtyMode('manual')">MANUAL</button>
-      </div>
-      <div id="os-auto-wrap">
-        <div class="os-row">
-          <span class="os-lbl">Risk %</span>
-          <input class="os-inp" id="os-risk" type="number" step="0.05" min="0.05" max="5" placeholder="0.30" oninput="osRecalc()">
-        </div>
-        <div class="os-pills" id="os-pills">
-          <button class="os-pill" onclick="osSetRisk(0.1)">0.1%</button>
-          <button class="os-pill" onclick="osSetRisk(0.15)">0.15%</button>
-          <button class="os-pill" onclick="osSetRisk(0.2)">0.2%</button>
-          <button class="os-pill" onclick="osSetRisk(0.3)">0.3%</button>
-          <button class="os-pill" onclick="osSetRisk(0.5)">0.5%</button>
-        </div>
-      </div>
-      <div id="os-manual-wrap" style="display:none">
-        <div class="os-row">
-          <span class="os-lbl">Shares</span>
-          <input class="os-inp" id="os-qty-manual" type="number" min="1" step="1" placeholder="100" oninput="osRecalc()">
-        </div>
-      </div>
-      <div class="os-calc" id="os-calc">
-        <div class="os-calc-row"><span class="os-cl">Shares</span><span class="os-cv" id="os-c-qty">—</span></div>
-        <div class="os-calc-row"><span class="os-cl">Risk $</span><span class="os-cv" id="os-c-rusd">—</span></div>
-        <div class="os-calc-row"><span class="os-cl">Position %</span><span class="os-cv" id="os-c-ppct">—</span></div>
-        <div class="os-calc-row"><span class="os-cl">Position $</span><span class="os-cv" id="os-c-pval">—</span></div>
-      </div>
-    </div>
-    <!-- Order type -->
-    <div class="os-sec">
-      <div class="os-title">Order Type</div>
-      <label class="os-ot-label sel" id="os-lbl-stop">
-        <input type="radio" name="os-ot" value="market_stop" checked onchange="osOnOtChange()" style="accent-color:#5b9ef5;width:auto">
-        Market + 1 Stop
-      </label>
-      <label class="os-ot-label" id="os-lbl-oco">
-        <input type="radio" name="os-ot" value="market_stop_oco" onchange="osOnOtChange()" style="accent-color:#5b9ef5;width:auto">
-        Market + 1 Stop (with OCO)
-      </label>
-    </div>
-    <!-- Submit -->
-    <div class="os-sec">
-      <button id="os-submit" class="os-submit long" onclick="osSubmit()">BUY MARKET</button>
-    </div>
-    <!-- Watchlist -->
-    <div class="os-sec" style="flex:1">
-      <div class="os-title">Watchlist</div>
-      <div class="os-wl-add">
-        <input class="os-wl-inp" id="os-wl-inp" placeholder="Add symbol..." maxlength="10"
-               oninput="this.value=this.value.toUpperCase()"
-               onkeydown="if(event.key==='Enter') osAddWatch()">
-        <button class="os-add-btn" onclick="osAddWatch()">+</button>
-      </div>
-      <div class="os-chips" id="os-chips"></div>
-    </div>
-  </div>
-  <button class="toggle-sidebar-btn sidebar-open" id="toggle-sidebar-btn" onclick="osToggleSidebar()" title="Toggle order panel">ORDER</button>
-  <script>
-  (function(){
-    try{
-      if (new URLSearchParams(location.search).get('multichart') !== '1') return;
-      var sb = document.getElementById('order-sidebar');
-      var btn = document.getElementById('toggle-sidebar-btn');
-      if (sb) sb.classList.add('collapsed');
-      if (btn) btn.classList.remove('sidebar-open');
-    }catch(e){}
-  })();
-  </script>
   <div class="chart-panel">
 
     <!-- chart topbar -->
@@ -1651,7 +1472,7 @@
           <path d="M2,16 L6,14 L10,16 L14,12 L18,16" stroke="currentColor" fill="none" stroke-width="1.5" opacity="0.5"/>
         </svg>
       </button>
-      <button id="vwap-toggle" class="ma-toggle-btn text" title="VWAP indicator" aria-label="VWAP indicator">VWAP</button>
+      <button id="vwap-toggle" class="ma-toggle-btn text" title="V indicator" aria-label="V indicator">V</button>
       <button id="ind-toggle" class="ma-toggle-btn" title="EMA Structure" aria-label="EMA Structure">
         <svg viewBox="0 0 20 20" class="ma-icon" aria-hidden="true">
           <path d="M2 13c2.2 0 2.2-6 4.4-6S8.6 15 10.8 15s2.2-8 4.4-8S17.4 13 19.5 13" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -3998,18 +3819,6 @@ function applyTimeframe(){
       infoMA.innerHTML = parts.length ? parts.join('<span class="ma-sep">|</span>') : '—';
     }
   }
-  try {
-    if (currentBars && currentBars.length) {
-      const b = resampleBars(currentBars, currentTF);
-      const a = calcATR14WilderFromBars(b);
-      OS.atr = a != null && Number.isFinite(a) && a > 0 ? a : null;
-    } else {
-      OS.atr = null;
-    }
-    osRefreshStopPanelLabels();
-    if (OS.activeStopMode) osApplyLockedStopPrice();
-    else osRecalc();
-  } catch (e) {}
   // Don't force the visible window back to the latest bar during realtime updates
   // if the user has manually zoomed/panned the chart.
   if (autoFollowLatest) applyVisibleDateRange(bars);
@@ -6441,6 +6250,22 @@ function setupChartMenu(){
       saveSettings();
     });
   }
+  // Keep drawing tools visible in light theme:
+  // convert default white tool colors to dark text color,
+  // and convert default dark text color back to white in dark theme.
+  try{
+    const darkInk = '#1a1f2e';
+    const lightInk = '#ffffff';
+    const keys = ['hline','ray','seg','line','text','note'];
+    for (const k of keys) {
+      const item = toolSettings[k];
+      if (!item || typeof item.color !== 'string') continue;
+      const c = item.color.trim().toLowerCase();
+      if (isLightTheme && c === '#ffffff') item.color = darkInk;
+      if (!isLightTheme && c === '#1a1f2e') item.color = lightInk;
+    }
+    syncDrawVars();
+  } catch(e) {}
 }
 
 function setupHistorySourceMenu(){
@@ -6608,10 +6433,6 @@ async function loadChart(sym, periodStr) {
       startBwSelectionPolling();
     }
     flash(`Loaded ${sym} [${String(lastHistorySourceUsed || historicalDataSource).toUpperCase()}]`);
-    // Order panel: same symbol as chart (quote + stop candidates)
-    if (ORDER_UI_ENABLED) {
-      try { osFetchAll(); } catch (e) {}
-    }
     // If EPS/Revenue panel is open, refresh for the new symbol.
     try{
       if (typeof epsPanel !== 'undefined' && epsPanel?.classList?.contains('open')) {
@@ -6751,365 +6572,6 @@ document.addEventListener('visibilitychange', function () {
     startBwSelectionPolling();
   } catch (e) {}
 });
-
-// ── Order Panel (embedded sidebar) ──────────────────────
-const ORDER_UI_ENABLED = false;
-const OS_ORDER_EMA_PERIOD = 8;
-const OS = {
-  symbol: '', direction: 'Long', qtyMode: 'auto',
-  quote: {}, balance: 0,
-  /** ATR(14) Wilder on current chart TF bars (for /ATR readout) */
-  atr: null,
-  /** @type {'ema8'|'prev'|null} locked stop source after user clicks a button */
-  activeStopMode: null,
-};
-
-if (!ORDER_UI_ENABLED) {
-  try {
-    const sb = document.getElementById('order-sidebar');
-    const btn = document.getElementById('toggle-sidebar-btn');
-    if (sb) sb.style.display = 'none';
-    if (btn) btn.style.display = 'none';
-  } catch (e) {}
-}
-
-function osToggleSidebar() {
-  if (!ORDER_UI_ENABLED) return;
-  const sb  = document.getElementById('order-sidebar');
-  const btn = document.getElementById('toggle-sidebar-btn');
-  const collapsed = sb.classList.toggle('collapsed');
-  btn.classList.toggle('sidebar-open', !collapsed);
-
-  // Fire resize continuously for the duration of the CSS transition (200ms)
-  // so chart canvas, topbar, and overlays all track smoothly
-  const DURATION = 220;
-  const INTERVAL = 16; // ~60fps
-  const start = performance.now();
-
-  function tick() {
-    window.dispatchEvent(new Event('resize'));
-    if (performance.now() - start < DURATION) {
-      requestAnimationFrame(tick);
-    } else {
-      // Final resize after transition fully settles
-      window.dispatchEvent(new Event('resize'));
-    }
-  }
-  requestAnimationFrame(tick);
-}
-
-async function osFetchBalance() {
-  if (!ORDER_UI_ENABLED) return;
-  try {
-    const r = await fetch('/api/account');
-    if (r.ok) { const d = await r.json(); OS.balance = d.balance || 0; osRecalc(); }
-  } catch(e) {}
-}
-if (ORDER_UI_ENABLED) {
-  setInterval(osFetchBalance, 30000);
-  osFetchBalance();
-}
-
-function _osCurrentSym() {
-  const inp = document.getElementById('sym-input');
-  return ((inp && inp.value.trim()) || currentSymbol || '').toUpperCase();
-}
-
-function _osNum(x) {
-  if (x == null || x === '') return NaN;
-  const n = typeof x === 'number' ? x : parseFloat(String(x).replace(/,/g, ''));
-  return n;
-}
-
-/** Same bar series as EMA Structure indicator (D/W/M). */
-function osOrderBars() {
-  if (!currentBars || !currentBars.length) return null;
-  return resampleBars(currentBars, currentTF);
-}
-
-/**
- * EMA8 on high / low — same calcEMAField(…,8) as the chart; if indicator already uses N=8,
- * reuse indEmaHMap / indEmaLMap at the last bar (no second pass).
- */
-function osGetEma8HL() {
-  const bars = osOrderBars();
-  if (!bars || bars.length < OS_ORDER_EMA_PERIOD) return null;
-  const lastT = bars[bars.length - 1].time;
-  try {
-    if (indN === OS_ORDER_EMA_PERIOD && indEmaHMap && indEmaLMap && indEmaHMap.has(lastT) && indEmaLMap.has(lastT)) {
-      const hi = indEmaHMap.get(lastT);
-      const lo = indEmaLMap.get(lastT);
-      if (Number.isFinite(hi) && Number.isFinite(lo)) return { high: hi, low: lo };
-    }
-  } catch (e) {}
-  const emaH = calcEMAField(bars, OS_ORDER_EMA_PERIOD, 'high');
-  const emaL = calcEMAField(bars, OS_ORDER_EMA_PERIOD, 'low');
-  if (!emaH.length || !emaL.length) return null;
-  const hi = emaH[emaH.length - 1].value;
-  const lo = emaL[emaL.length - 1].value;
-  if (!Number.isFinite(hi) || !Number.isFinite(lo)) return null;
-  return { high: hi, low: lo };
-}
-
-/** Previous completed bar high/low (same series as chart). */
-function osGetPrevHL() {
-  const bars = osOrderBars();
-  if (!bars || bars.length < 2) return null;
-  const p = bars[bars.length - 2];
-  const hi = p.high, lo = p.low;
-  if (!Number.isFinite(hi) || !Number.isFinite(lo)) return null;
-  return { high: hi, low: lo };
-}
-
-function osRefreshStopPanelLabels() {
-  const btnE = document.querySelector('#os-stop-grid [data-mode="ema8"]');
-  const btnP = document.querySelector('#os-stop-grid [data-mode="prev"]');
-  const symOk = (currentSymbol || '').toUpperCase() === _osCurrentSym() && currentBars && currentBars.length;
-  const ema = symOk ? osGetEma8HL() : null;
-  const prev = symOk ? osGetPrevHL() : null;
-  if (btnE) {
-    if (ema) {
-      btnE.textContent = 'EMA8 (H/L)\nL ' + osFmt(ema.low) + ' · H ' + osFmt(ema.high);
-    } else {
-      btnE.textContent = 'EMA8 (H/L)';
-    }
-  }
-  if (btnP) {
-    if (prev) {
-      btnP.textContent = 'Prev (H/L)\nLo ' + osFmt(prev.low) + ' · Hi ' + osFmt(prev.high);
-    } else {
-      btnP.textContent = 'Prev (H/L)';
-    }
-  }
-}
-
-/** Long → EMA low / prev low; Short → EMA high / prev high */
-function osApplyLockedStopPrice() {
-  if (!OS.activeStopMode) return;
-  const sym = _osCurrentSym();
-  if ((currentSymbol || '').toUpperCase() !== sym) return;
-  let val = null;
-  if (OS.activeStopMode === 'ema8') {
-    const ema = osGetEma8HL();
-    if (!ema) {
-      osShowToast('EMA8: need more bars or load chart', 'error');
-      return;
-    }
-    val = OS.direction === 'Long' ? ema.low : ema.high;
-  } else {
-    const p = osGetPrevHL();
-    if (!p) {
-      osShowToast('Prev bar: need 2+ bars on chart', 'error');
-      return;
-    }
-    val = OS.direction === 'Long' ? p.low : p.high;
-  }
-  if (!Number.isFinite(val) || val <= 0) {
-    osShowToast('Invalid stop price', 'error');
-    return;
-  }
-  const stopEl = document.getElementById('os-stop');
-  if (stopEl) stopEl.value = val.toFixed(2);
-  osRecalc();
-}
-
-function osSelectStopMode(mode) {
-  if (mode !== 'ema8' && mode !== 'prev') return;
-  if (OS.activeStopMode === mode) {
-    OS.activeStopMode = null;
-    document.querySelectorAll('#os-stop-grid .os-stop-btn').forEach(b => b.classList.remove('active'));
-    return;
-  }
-  OS.activeStopMode = mode;
-  document.querySelectorAll('#os-stop-grid .os-stop-btn').forEach(b => {
-    b.classList.toggle('active', b.getAttribute('data-mode') === mode);
-  });
-  osApplyLockedStopPrice();
-}
-
-async function osFetchAll() {
-  if (!ORDER_UI_ENABLED) return;
-  const sym = _osCurrentSym();
-  if (!sym) return;
-  OS.symbol = sym;
-  const enc = encodeURIComponent(sym);
-  try {
-    const r = await fetch('/api/quote/' + enc);
-    if (r.ok) { OS.quote = await r.json(); }
-  } catch(e) {}
-
-  const symMatch = (currentSymbol || '').toUpperCase() === sym;
-  if (symMatch && currentBars && currentBars.length) {
-    const bars = resampleBars(currentBars, currentTF);
-    const atr = calcATR14WilderFromBars(bars);
-    OS.atr = atr != null && Number.isFinite(atr) && atr > 0 ? atr : null;
-  } else {
-    OS.atr = null;
-  }
-
-  osRefreshStopPanelLabels();
-  if (OS.activeStopMode) osApplyLockedStopPrice();
-  else osRecalc();
-}
-
-function osSetDir(dir) {
-  OS.direction = dir;
-  const btns = document.querySelectorAll('#os-dir button');
-  btns[0].className = dir === 'Long'  ? 'active-long'  : '';
-  btns[1].className = dir === 'Short' ? 'active-short' : '';
-  const btn = document.getElementById('os-submit');
-  btn.className = 'os-submit ' + dir.toLowerCase();
-  btn.textContent = (dir === 'Long' ? 'BUY' : 'SELL SHORT') + ' MARKET';
-  if (OS.activeStopMode) osApplyLockedStopPrice();
-  else osRecalc();
-}
-
-function osSetQtyMode(mode) {
-  OS.qtyMode = mode;
-  document.querySelectorAll('#os-qty-toggle button').forEach((b,i) => {
-    b.classList.toggle('active', (i===0 && mode==='auto') || (i===1 && mode==='manual'));
-  });
-  document.getElementById('os-auto-wrap').style.display   = mode === 'auto'   ? '' : 'none';
-  document.getElementById('os-manual-wrap').style.display = mode === 'manual' ? '' : 'none';
-  osRecalc();
-}
-
-function osSetRisk(val) {
-  document.getElementById('os-risk').value = val;
-  document.querySelectorAll('#os-pills button').forEach(b => {
-    b.classList.toggle('active', parseFloat(b.textContent) / 100 === val);
-  });
-  osRecalc();
-}
-
-function osOnOtChange() {
-  document.querySelectorAll('.os-ot-label').forEach(l => {
-    l.classList.toggle('sel', l.querySelector('input').checked);
-  });
-}
-
-function osRecalc() {
-  const stop = parseFloat(document.getElementById('os-stop').value) || 0;
-  const last = OS.quote.last || 0;
-  let qty = 0;
-  if (OS.qtyMode === 'auto') {
-    const riskPctIn = parseFloat(document.getElementById('os-risk').value) || 0;
-    const riskUsdBudget = OS.balance * (riskPctIn / 100);
-    const rps = last > 0 && stop > 0 ? Math.abs(last - stop) : 0;
-    qty = rps > 0 ? Math.max(1, Math.floor(riskUsdBudget / rps)) : 0;
-  } else {
-    qty = parseInt(document.getElementById('os-qty-manual').value) || 0;
-  }
-  const rps = last > 0 && stop > 0 ? Math.abs(last - stop) : 0;
-  const posVal = qty * last;
-  const posPct = OS.balance > 0 && posVal > 0 ? (posVal / OS.balance) * 100 : 0;
-  document.getElementById('os-c-qty').textContent  = qty  > 0 ? qty : '—';
-  document.getElementById('os-c-rusd').textContent = qty > 0 && rps > 0 ? '$' + osFmt(qty * rps) : '—';
-  document.getElementById('os-c-ppct').textContent = posPct > 0 ? posPct.toFixed(2) + '%' : '—';
-  document.getElementById('os-c-pval').textContent = qty > 0 && last > 0 ? '$' + osFmt(posVal) : '—';
-
-  const ratioEl = document.getElementById('os-atr-ratio');
-  const distEl = document.getElementById('os-stop-dist-pct');
-  const atr = OS.atr;
-  if (ratioEl && distEl) {
-    if (last > 0 && stop > 0 && atr && atr > 0) {
-      const distAbs = Math.abs(last - stop);
-      const pctOfAtr = (distAbs / atr) * 100;
-      ratioEl.textContent = pctOfAtr.toFixed(1) + '%';
-      ratioEl.classList.remove('os-atr-ok', 'os-atr-bad', 'os-atr-neu');
-      ratioEl.classList.add(pctOfAtr <= 100 ? 'os-atr-ok' : 'os-atr-bad');
-      const distPctPrice = (distAbs / last) * 100;
-      distEl.textContent = distPctPrice.toFixed(2) + '%';
-      distEl.classList.remove('os-atr-ok', 'os-atr-bad', 'os-atr-neu');
-      distEl.classList.add('os-atr-neu');
-    } else {
-      ratioEl.textContent = '—';
-      distEl.textContent = '—';
-      ratioEl.classList.remove('os-atr-ok', 'os-atr-bad');
-      distEl.classList.remove('os-atr-ok', 'os-atr-bad');
-      ratioEl.classList.add('os-atr-neu');
-      distEl.classList.add('os-atr-neu');
-    }
-  }
-}
-
-async function osSubmit() {
-  const symSubmit = _osCurrentSym();
-  OS.symbol = symSubmit;
-  if (!symSubmit) { osShowToast('Enter a symbol in the top bar first', 'error'); return; }
-  const stop = parseFloat(document.getElementById('os-stop').value);
-  if (!stop || stop <= 0) { osShowToast('Enter a valid stop price', 'error'); return; }
-  let qty = 0;
-  if (OS.qtyMode === 'auto') {
-    const riskPct = parseFloat(document.getElementById('os-risk').value) || 0;
-    const last    = OS.quote.last || 0;
-    const rps     = Math.abs(last - stop);
-    qty = rps > 0 ? Math.max(1, Math.floor(OS.balance * (riskPct / 100) / rps)) : 0;
-  } else {
-    qty = parseInt(document.getElementById('os-qty-manual').value) || 0;
-  }
-  if (qty < 1) { osShowToast('Cannot calculate valid quantity', 'error'); return; }
-  const orderType = document.querySelector('input[name="os-ot"]:checked').value;
-  if (!confirm((OS.direction==='Long'?'BUY':'SELL SHORT')+' '+qty+' '+symSubmit+'\nStop: $'+stop.toFixed(2)+'\nConfirm?')) return;
-  try {
-    const resp = await fetch('/api/order', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({symbol: symSubmit, direction: OS.direction, order_type: orderType, qty, stop_price: stop}),
-    });
-    if (resp.ok) { osShowToast('Order placed: ' + OS.direction + ' ' + qty + ' ' + symSubmit, 'success'); }
-    else { const e = await resp.json(); osShowToast('Failed: ' + (e.detail || 'error'), 'error'); }
-  } catch(e) { osShowToast('Network error', 'error'); }
-}
-
-// Watchlist
-let osWatchlist = [];
-async function osLoadWatch() {
-  if (!ORDER_UI_ENABLED) return;
-  try { const r = await fetch('/api/watchlist'); if (r.ok) { const d = await r.json(); osWatchlist = d.symbols || []; osRenderWatch(); } } catch(e) {}
-}
-function osRenderWatch() {
-  document.getElementById('os-chips').innerHTML = osWatchlist.map(function(s) {
-    return '<div class="os-chip"><span onclick="osPickWatch(' + JSON.stringify(s) + ')">' + s + '</span><span class="os-chip-x" onclick="osRemoveWatch(' + JSON.stringify(s) + ')">&#x2715;</span></div>';
-  }).join('');
-}
-function osPickWatch(sym) {
-  const el = document.getElementById('sym-input');
-  if (el) el.value = sym;
-  OS.symbol = sym;
-  loadChart(sym);
-  try { _fetchRankTags(sym); } catch (e) {}
-}
-function osAddWatch() {
-  const sym = document.getElementById('os-wl-inp').value.trim().toUpperCase();
-  if (!sym || osWatchlist.includes(sym)) return;
-  osWatchlist.push(sym);
-  document.getElementById('os-wl-inp').value = '';
-  osSaveWatch(); osRenderWatch();
-}
-function osRemoveWatch(sym) {
-  osWatchlist = osWatchlist.filter(s => s !== sym);
-  osSaveWatch(); osRenderWatch();
-}
-async function osSaveWatch() {
-  try { await fetch('/api/watchlist', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({symbols: osWatchlist})}); } catch(e) {}
-}
-if (ORDER_UI_ENABLED) osLoadWatch();
-
-let osToastTimer;
-function osShowToast(msg, type) {
-  const el = document.getElementById('os-toast');
-  el.textContent = msg; el.className = 'os-toast show ' + (type||'info');
-  clearTimeout(osToastTimer);
-  osToastTimer = setTimeout(() => el.classList.remove('show'), 3000);
-}
-
-function osFmt(n) {
-  return n == null ? '—' : parseFloat(n).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-}
-
-// Position toggle button based on sidebar state
-
 
 </script>
 </body>
