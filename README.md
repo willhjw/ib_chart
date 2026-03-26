@@ -200,5 +200,3 @@ MIT. See `LICENSE`.
 If you find this project helpful, please consider buying me a coffee. Building and maintaining this tool involves significant development time and AI token costs.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20my%20work-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/willhu)
-
----
