@@ -4,6 +4,7 @@ A lightweight local web app (Flask + HTML) that gives you fast, trader-friendly 
 
 This is designed for US stock traders who may not code, but want to **connect charts to their screener and dashboard** (and use “vibe coding” with an AI assistant to glue things together).
 
+![Single chart screenshot](assets/ScreenShot1.png)
 
 
 ## What you get (in plain English)
