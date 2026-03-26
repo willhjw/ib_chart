@@ -4,13 +4,19 @@ A lightweight local web app (Flask + HTML) that gives you fast, trader-friendly 
 
 This is designed for US stock traders who may not code, but want to **connect charts to their screener and dashboard** (and use “vibe coding” with an AI assistant to glue things together).
 
+## Screenshots
+
+### Single chart
 ![Single chart screenshot](assets/ScreenShot1.png)
 
+### Multi-chart
+![Multi-chart screenshot](assets/ScreenShot2.png)
 
 ## What you get (in plain English)
 
 - **A single chart page**: `ib_chart.html`
 - **A multi-panel chart page**: `ib_multichart.html` (great for watchlists and theme baskets)
+
 - **Simple APIs** your screener/dashboard can call:
   - **Daily candles**: `GET /api/pricehistory?symbol=AAPL&period_str=1y&hist_source=local|ib`
   - **Intraday candles (1m/5m)**: `GET /api/intraday?symbol=AAPL&interval=1m`
